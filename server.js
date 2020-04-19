@@ -4,15 +4,17 @@ module.exports = function (options) {
   const { loginUrl, emailPostfix } = options;
 
   this.bindHook('third_login', (ctx) => {
-    let token = ctx.request.body.token || ctx.request.query.token;
+    let token = ctx.request.query.kgLoginTicket;
     return new Promise((resolve, reject) => {
       request(loginUrl + token, function (error, response, body) {
+        console.log(body)
         if (!error && response.statusCode == 200) {
           let result = JSON.parse(body);
-          if (result && result.ret === true) {
+          if (result && result.returnCode === 0 ) {
+            console.log(result);
             let ret = {
-              email: result.userId + emailPostfix,
-              username: result.data.userInfo.name
+              email: result.data.userName + emailPostfix,
+              username: result.data.userName
             };
             resolve(ret);
           } else {
@@ -24,3 +26,4 @@ module.exports = function (options) {
     });
   })
 }
+

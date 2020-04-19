@@ -5,17 +5,17 @@
 第一步： 在生成的配置文件config.json中加入如下配置：  
 
 ```
-"plugins": [
-    {
-      "name": "qsso",
+   "plugins": [
+      {
+         "name": "qsso",
       "options": {
         "type": "sso",
-        "loginUrl": "http://sso.example.com/service/verifytoken.php?token=",
-        "emailPostfix": "@163.com",
-        "AUTH_SERVER" : "https://sso.example.com/login.php"
+        "loginUrl": "http://opi.kgidc.cn/user/user/get.php?appid=v1-5e675b4f34c3b&appsecret=277d9cf83581aeee5048fbd3b33c33db&kgLoginTicket=",
+        "emailPostfix": "@kugou.net",
+        "AUTH_SERVER" : "http://opd.kugou.net/common/signinApi.php?appId=v1-5e675b4f34c3b&"
       }
-    }
-  ]
+      }
+   ]
 ```   
 这里面的配置项含义如下：  
 
